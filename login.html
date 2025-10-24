@@ -1,0 +1,61 @@
+<!doctype html>
+
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Login - Ujian Online</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="brand">Ujian Online</a>
+      <nav>
+        <a href="register.html">Daftar</a>
+      </nav>
+    </div>
+  </header>  <main class="container">
+    <section class="card form-card">
+      <h1>Login</h1>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="email">Email / Username Admin</label>
+          <input type="text" id="email" required placeholder="user@email.com atau admin">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" required>
+        </div>
+        <button type="submit" class="btn">Login</button>
+        <p class="note">Belum punya akun? <a href="register.html">Daftar di sini</a></p>
+      </form>
+      <p id="loginMessage" class="message"></p>
+    </section>
+  </main>  <footer>
+    <div class="container footer-inner">
+      <small>© 2025 Ujian Online</small>
+    </div>
+  </footer>  <script src="utils.js"></script>  <script src="storage.js"></script>  <script src="auth.js"></script>  <script>
+    const form = document.getElementById('loginForm');
+    const msg = document.getElementById('loginMessage');
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const id = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      const result = await loginUser(id, password);
+      if (result.success) {
+        msg.textContent = 'Login berhasil!';
+        if (result.role === 'admin') {
+          window.location.href = 'admin-dashboard.html';
+        } else {
+          window.location.href = 'dashboard.html';
+        }
+      } else {
+        msg.textContent = result.error;
+      }
+    });
+  </script></body>
+</html>

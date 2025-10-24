@@ -1,0 +1,65 @@
+<!doctype html>
+
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ujian Online - Dashboard</title>
+  <meta name="description" content="Aplikasi ujian offline-friendly (static) - Dashboard utama, reg/login, dan navigasi.">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="brand">Ujian Online</a>
+      <nav>
+        <a href="register.html">Daftar</a>
+        <a href="login.html">Login</a>
+        <a href="admin-dashboard.html">Admin</a>
+      </nav>
+    </div>
+  </header>  <main class="container">
+    <section id="hero" class="card">
+      <h1>Selamat datang di Ujian Online</h1>
+      <p>Platform ujian sederhana untuk latihan dan evaluasi. Login untuk memulai.</p>
+      <div class="actions">
+        <a class="btn" href="register.html">Daftar sebagai Siswa</a>
+        <a class="btn ghost" href="login.html">Login</a>
+      </div>
+    </section><section id="features" class="card-row">
+  <article class="card small">
+    <h3>Tanpa Timer Otomatis</h3>
+    <p>Ujian tidak berhenti otomatis. Admin mempublikasikan ujian.</p>
+  </article>
+
+  <article class="card small">
+    <h3>Navigasi Bebas</h3>
+    <p>Lompat antar soal, sistem autosave menyimpan jawaban.</p>
+  </article>
+
+  <article class="card small">
+    <h3>Hasil Lengkap</h3>
+    <p>Skor dan penjelasan per soal setelah submit.</p>
+  </article>
+</section>
+
+<section id="how-to" class="card">
+  <h2>Langkah singkat</h2>
+  <ol>
+    <li>Daftar dengan email .com dan password.</li>
+    <li>Login, buka Dashboard, baca Aturan Pelaksanaan Ujian.</li>
+    <li>Jika tombol Mulai Ujian muncul, klik untuk masuk exam.</li>
+  </ol>
+</section>
+
+<section id="dev-note" class="card small muted">
+  <h4>Catatan pengembang</h4>
+  <p>Data disimpan di files JSON (users.json, questions.json, exam-config.json) atau localStorage saat demo.</p>
+</section>
+
+  </main>  <footer>
+    <div class="container footer-inner">
+      <small>© 2025 Ujian Online • Untuk demo dan pengembangan</small>
+    </div>
+  </footer>  <script src="utils.js"></script>  <script src="auth.js"></script>  <script src="storage.js"></script>  <script src="app.js"></script></body>
+      </html>

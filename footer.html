@@ -1,0 +1,20 @@
+<footer class="app-footer" data-animate="fade">
+  <div class="container footer-inner">
+    <small>© 2025 Ujian Online</small>
+    <nav class="footer-links">
+      <a href="index.html" data-transition>Beranda</a>
+      <a href="dashboard.html" data-transition>Dashboard</a>
+      <a href="account.html" data-transition>Akun</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  // Efek transisi untuk link footer
+  document.querySelectorAll('footer a[data-transition]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      ui.pageTransition(e.target.getAttribute('href'));
+    });
+  });
+</script>

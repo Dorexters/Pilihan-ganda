@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aktivitas Admin</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="animation.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body data-page="admin-activity" class="fade-in">
+
+  <include src="header.html"></include>
+
+  <main class="admin-container" data-transition="slide-up">
+    <section class="admin-header">
+      <h1 data-animate="fade-down">Aktivitas Sistem</h1>
+      <p class="subtext">Pantau semua tindakan yang dilakukan pengguna dan admin.</p>
+    </section>
+
+    <section class="activity-log card" data-animate="fade-up">
+      <div class="table-toolbar">
+        <input type="text" id="activitySearch" placeholder="Cari aktivitas..." />
+        <button class="btn secondary" id="exportActivity">Ekspor Log</button>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Waktu</th>
+            <th>Pengguna</th>
+            <th>Aksi</th>
+            <th>Detail</th>
+          </tr>
+        </thead>
+        <tbody id="activityTable">
+          <!-- Log akan dimuat lewat admin.js -->
+        </tbody>
+      </table>
+    </section>
+
+    <section class="summary-section card" data-animate="fade-up">
+      <h2>Ringkasan Aktivitas</h2>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <h3>Total Login</h3>
+          <p id="totalLogin">0</p>
+        </div>
+        <div class="summary-item">
+          <h3>Soal Diubah</h3>
+          <p id="totalEdit">0</p>
+        </div>
+        <div class="summary-item">
+          <h3>Ujian Diselesaikan</h3>
+          <p id="totalFinish">0</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <include src="footer.html"></include>
+
+  <include src="toast-message.html"></include>
+  <include src="loading-spinner.html"></include>
+
+  <script src="app.js"></script>
+  <script src="ui.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

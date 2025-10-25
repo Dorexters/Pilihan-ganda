@@ -1,0 +1,73 @@
+<div id="toastContainer" class="toast-container"></div>
+
+<script>
+  // Fungsi global untuk menampilkan toast
+  window.showToast = (message, type = 'info', duration = 3000) => {
+    const container = document.getElementById('toastContainer');
+    if (!container) return;
+
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.textContent = message;
+
+    container.appendChild(toast);
+
+    // Animasi masuk
+    requestAnimationFrame(() => {
+      toast.classList.add('show');
+    });
+
+    // Hapus otomatis
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => container.removeChild(toast), 300);
+    }, duration);
+  };
+</script>
+
+<style>
+  .toast-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .toast {
+    background: var(--surface);
+    color: #333;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+    font-weight: 500;
+    min-width: 200px;
+    max-width: 300px;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .toast-info {
+    border-left: 4px solid var(--accent, #3498db);
+  }
+
+  .toast-success {
+    border-left: 4px solid var(--success, #2ecc71);
+  }
+
+  .toast-warning {
+    border-left: 4px solid var(--warning, #f39c12);
+  }
+
+  .toast-error {
+    border-left: 4px solid var(--error, #e74c3c);
+  }
+      </style>

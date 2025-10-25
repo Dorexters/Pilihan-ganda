@@ -1,0 +1,43 @@
+<div id="modalConfirm" class="modal-backdrop hidden" data-animate="fade">
+  <div class="modal" data-animate="scale">
+    <h3 id="modalTitle">Konfirmasi</h3>
+    <p id="modalMessage">Anda yakin ingin melanjutkan tindakan ini?</p>
+    <div class="modal-actions">
+      <button id="modalCancelBtn" class="btn-secondary">Batal</button>
+      <button id="modalConfirmBtn" class="btn-danger">Ya, Lanjutkan</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Fungsi global untuk menampilkan konfirmasi
+  window.showConfirm = (title, message, onConfirm) => {
+    const modal = document.getElementById('modalConfirm');
+    const titleEl = document.getElementById('modalTitle');
+    const messageEl = document.getElementById('modalMessage');
+    const confirmBtn = document.getElementById('modalConfirmBtn');
+    const cancelBtn = document.getElementById('modalCancelBtn');
+
+    titleEl.textContent = title || 'Konfirmasi';
+    messageEl.textContent = message || 'Anda yakin?';
+    modal.classList.remove('hidden');
+
+    // Animasi masuk
+    modal.classList.add('show');
+    ui.animateModal(modal, true);
+
+    const cleanup = () => {
+      modal.classList.add('hidden');
+      modal.classList.remove('show');
+      confirmBtn.replaceWith(confirmBtn.cloneNode(true));
+      cancelBtn.replaceWith(cancelBtn.cloneNode(true));
+    };
+
+    confirmBtn.addEventListener('click', () => {
+      cleanup();
+      if (typeof onConfirm === 'function') onConfirm();
+    });
+
+    cancelBtn.addEventListener('click', cleanup);
+  };
+        </script>

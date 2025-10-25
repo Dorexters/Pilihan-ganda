@@ -1,69 +1,52 @@
-<!doctype html>
-
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Dashboard Siswa - Ujian Online</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Siswa</title>
   <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="animation.css">
+  <script src="app.js" defer></script>
+  <script src="ui.js" defer></script>
+  <script src="auth.js" defer></script>
 </head>
-<body>
-  <header>
-    <div class="container header-inner">
-      <a href="index.html" class="brand">Ujian Online</a>
-      <nav>
-        <a href="account.html">Akun</a>
-        <a href="#" id="logoutBtn">Logout</a>
-      </nav>
-    </div>
-  </header>  <main class="container">
-    <section class="card">
-      <h1>Aturan Pelaksanaan Ujian</h1>
-      <ul>
-        <li>Pastikan koneksi Anda stabil sebelum mulai.</li>
-        <li>Jawaban tersimpan otomatis setiap kali Anda berpindah soal.</li>
-        <li>Anda bebas berpindah antar soal sebelum menekan tombol Selesai.</li>
-        <li>Tidak ada batas waktu otomatis.</li>
-        <li>Setelah selesai, hasil menampilkan skor dan penjelasan tiap soal.</li>
-      </ul>
-    </section><section class="card">
-  <h2>Ujian yang Tersedia</h2>
-  <div id="examSection">
-    <p id="examStatus">Memuat status ujian...</p>
-    <button id="startExamBtn" class="btn" style="display:none">Mulai Ujian</button>
+<body data-transition="fade">
+  <header data-animate="slide-down">
+    <h1>Dashboard Siswa</h1>
+    <nav>
+      <button id="btn-exam" class="btn primary">Mulai Ujian</button>
+      <button id="btn-account" class="btn">Akun Saya</button>
+      <button id="btn-logout" class="btn danger">Keluar</button>
+    </nav>
+  </header>  <main id="dashboard-content">
+    <section data-animate="fade-in">
+      <h2>Selamat datang, <span id="student-name">Siswa</span>!</h2>
+      <p>Berikut informasi ujian yang tersedia:</p><div id="exam-list" class="exam-list" data-animate="slide-up">
+    <!-- Daftar ujian dimuat dari exam-config.json -->
   </div>
 </section>
 
-  </main>  <footer>
-    <div class="container footer-inner">
-      <small>© 2025 Ujian Online</small>
-    </div>
-  </footer>  <script src="utils.js"></script>  <script src="storage.js"></script>  <script src="auth.js"></script>  <script>
-    async function initDashboard() {
-      const user = await getCurrentUser();
-      if (!user) {
-        window.location.href = 'login.html';
-        return;
-      }
+<section id="leaderboard" data-animate="fade-in">
+  <h3>Peringkat Teratas</h3>
+  <table class="leaderboard-table">
+    <thead>
+      <tr>
+        <th>Peringkat</th>
+        <th>Nama</th>
+        <th>Skor</th>
+      </tr>
+    </thead>
+    <tbody id="leaderboard-body">
+      <!-- Data leaderboard dimuat dari storage.js -->
+    </tbody>
+  </table>
+</section>
 
-      const examConfig = await readJSON('exam-config.json');
-      const examStatus = document.getElementById('examStatus');
-      const startBtn = document.getElementById('startExamBtn');
-
-      if (examConfig && examConfig.published) {
-        examStatus.textContent = 'Ujian tersedia. Siap untuk dimulai.';
-        startBtn.style.display = 'inline-block';
-        startBtn.onclick = () => window.location.href = 'exam.html';
-      } else {
-        examStatus.textContent = 'Belum ada ujian yang dipublikasikan.';
-      }
-    }
-
-    document.getElementById('logoutBtn').addEventListener('click', () => {
-      logoutUser();
-      window.location.href = 'login.html';
+  </main>  <!-- Komponen UI Global -->  <div id="toast-container"></div>
+  <div id="loading-spinner"></div>
+  <div id="animated-modal"></div>  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      ui.revealOnScroll();
+      ui.pageTransition();
     });
-
-    initDashboard();
   </script></body>
-  </html>
+</html>

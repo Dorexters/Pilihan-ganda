@@ -1,65 +1,43 @@
-<!doctype html>
-
-<html lang="id">
+<!DOCTYPE html>
+<html lang="id" data-theme>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Ujian Online - Dashboard</title>
-  <meta name="description" content="Aplikasi ujian offline-friendly (static) - Dashboard utama, reg/login, dan navigasi.">
-  <link rel="stylesheet" href="main.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ujian Online</title>
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="animation.css" />
 </head>
-<body>
-  <header>
-    <div class="container header-inner">
-      <a href="index.html" class="brand">Ujian Online</a>
-      <nav>
-        <a href="register.html">Daftar</a>
-        <a href="login.html">Login</a>
-        <a href="admin-dashboard.html">Admin</a>
-      </nav>
-    </div>
-  </header>  <main class="container">
-    <section id="hero" class="card">
-      <h1>Selamat datang di Ujian Online</h1>
-      <p>Platform ujian sederhana untuk latihan dan evaluasi. Login untuk memulai.</p>
-      <div class="actions">
-        <a class="btn" href="register.html">Daftar sebagai Siswa</a>
-        <a class="btn ghost" href="login.html">Login</a>
+<body data-page="index" data-animate="fade-in">
+  <header data-include="header.html"></header>
+
+  <main class="landing" data-animate="slide-up">
+    <section class="hero">
+      <h1 class="title">Selamat Datang di Sistem Ujian Online</h1>
+      <p class="subtitle">Platform belajar dan ujian interaktif untuk siswa dan admin</p>
+      <div class="hero-buttons" data-animate="scale-in">
+        <a href="login.html" class="btn-primary">Masuk</a>
+        <a href="register.html" class="btn-secondary">Daftar</a>
       </div>
-    </section><section id="features" class="card-row">
-  <article class="card small">
-    <h3>Tanpa Timer Otomatis</h3>
-    <p>Ujian tidak berhenti otomatis. Admin mempublikasikan ujian.</p>
-  </article>
+    </section>
 
-  <article class="card small">
-    <h3>Navigasi Bebas</h3>
-    <p>Lompat antar soal, sistem autosave menyimpan jawaban.</p>
-  </article>
+    <section class="features" data-animate="fade-up">
+      <h2>Fitur Utama</h2>
+      <ul class="feature-list">
+        <li data-animate="reveal">Ujian tanpa batas waktu</li>
+        <li data-animate="reveal">Navigasi soal bebas</li>
+        <li data-animate="reveal">Autosave jawaban otomatis</li>
+        <li data-animate="reveal">Penilaian dan pembahasan instan</li>
+      </ul>
+    </section>
+  </main>
 
-  <article class="card small">
-    <h3>Hasil Lengkap</h3>
-    <p>Skor dan penjelasan per soal setelah submit.</p>
-  </article>
-</section>
+  <footer data-include="footer.html"></footer>
 
-<section id="how-to" class="card">
-  <h2>Langkah singkat</h2>
-  <ol>
-    <li>Daftar dengan email .com dan password.</li>
-    <li>Login, buka Dashboard, baca Aturan Pelaksanaan Ujian.</li>
-    <li>Jika tombol Mulai Ujian muncul, klik untuk masuk exam.</li>
-  </ol>
-</section>
+  <div data-include="loading-spinner.html"></div>
+  <div data-include="toast-message.html"></div>
+  <div data-include="animated-modal.html"></div>
 
-<section id="dev-note" class="card small muted">
-  <h4>Catatan pengembang</h4>
-  <p>Data disimpan di files JSON (users.json, questions.json, exam-config.json) atau localStorage saat demo.</p>
-</section>
-
-  </main>  <footer>
-    <div class="container footer-inner">
-      <small>© 2025 Ujian Online • Untuk demo dan pengembangan</small>
-    </div>
-  </footer>  <script src="utils.js"></script>  <script src="auth.js"></script>  <script src="storage.js"></script>  <script src="app.js"></script></body>
-      </html>
+  <script src="app.js"></script>
+  <script src="ui.js"></script>
+</body>
+</html>

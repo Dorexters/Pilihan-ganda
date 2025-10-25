@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id" data-theme>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Admin | Ujian Online</title>
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="animation.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body data-page="admin-dashboard" data-animate="fade-in">
+  <header data-include="header.html"></header>
+
+  <main class="admin-dashboard" data-animate="slide-up">
+    <section class="dashboard-header">
+      <h1 class="title">Panel Admin</h1>
+      <p class="subtitle">Kelola ujian, pantau siswa, dan hasil belajar</p>
+    </section>
+
+    <nav class="admin-nav" data-animate="fade-up">
+      <button class="btn-nav" data-link="admin-questions.html">Kelola Soal</button>
+      <button class="btn-nav" data-link="admin-activity.html">Aktivitas Siswa</button>
+      <button class="btn-nav" data-link="admin-leaderboard.html">Leaderboard</button>
+    </nav>
+
+    <section class="exam-controls" data-animate="fade-up">
+      <h2>Status Ujian</h2>
+      <div class="exam-status">
+        <p>Status: <span id="examStatus" class="status-badge">Memuat...</span></p>
+        <div class="exam-buttons">
+          <button id="publishExamBtn" class="btn-primary" data-animate="scale-in">Mulai Ujian</button>
+          <button id="unpublishExamBtn" class="btn-secondary" data-animate="scale-in" hidden>Unpublish Ujian</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="export-controls" data-animate="fade-up">
+      <h2>Ekspor & Data</h2>
+      <div class="export-actions">
+        <button id="exportQuestionsBtn" class="btn-outline">Export Questions</button>
+        <button id="exportResultsBtn" class="btn-outline">Export Results</button>
+        <button id="exportAllBtn" class="btn-primary">Export All</button>
+        <button id="resetLeaderboardBtn" class="btn-danger">Reset Leaderboard</button>
+      </div>
+    </section>
+  </main>
+
+  <footer data-include="footer.html"></footer>
+
+  <div data-include="modal-confirm.html"></div>
+  <div data-include="loading-spinner.html"></div>
+  <div data-include="toast-message.html"></div>
+  <div data-include="animated-modal.html"></div>
+
+  <script src="app.js"></script>
+  <script src="ui.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -1,37 +1,41 @@
-<!doctype html>
-
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Ujian - Ujian Online</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ujian Online</title>
   <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="animation.css">
   <link rel="stylesheet" href="exam.css">
+  <script src="app.js" defer></script>
+  <script src="ui.js" defer></script>
+  <script src="exam.js" defer></script>
 </head>
-<body>
-  <header>
-    <div class="container header-inner">
-      <a href="dashboard.html" class="brand">Ujian Online</a>
-      <nav>
-        <a href="#" id="logoutBtn">Logout</a>
-      </nav>
-    </div>
-  </header>  <main class="container">
-    <section id="examContainer" class="card">
-      <div id="questionArea"></div>
-      <div id="navigator" class="navigator"></div>
-      <button id="submitExamBtn" class="btn">Selesai</button>
-    </section>
-  </main>  <footer>
-    <div class="container footer-inner">
-      <small>© 2025 Ujian Online</small>
-    </div>
-  </footer>  <script src="utils.js"></script>  <script src="storage.js"></script>  <script src="auth.js"></script>  <script src="exam.js"></script>  <script>
-    document.getElementById('logoutBtn').addEventListener('click', () => {
-      logoutUser();
-      window.location.href = 'login.html';
-    });
+<body data-transition="fade">
+  <header data-animate="slide-down">
+    <h1>Ujian Online</h1>
+    <div id="exam-timer" class="timer" data-animate="fade-in"></div>
+  </header>  <main id="exam-container">
+    <section id="question-section" data-animate="crossfade">
+      <div class="question-header">
+        <span id="question-number">1</span>
+        <span id="question-category"></span>
+      </div>
+      <div id="question-text"></div>
+      <ul id="options-list" class="options"></ul>
+    </section><nav class="exam-navigation" data-animate="slide-up">
+  <button id="prev-btn" class="btn" disabled>Sebelumnya</button>
+  <button id="next-btn" class="btn">Selanjutnya</button>
+  <button id="submit-btn" class="btn danger">Kumpulkan</button>
+</nav>
 
-    initExamPage(); // fungsi utama dari exam.js
+  </main>  <aside id="question-navigator" data-animate="fade-in">
+    <!-- question-navigator.html akan dimasukkan di sini oleh app.js -->
+  </aside>  <div id="autosave-indicator" data-animate="fade" class="autosave">Tersimpan otomatis</div>  <!-- Komponen UI Global -->  <div id="toast-container"></div>
+  <div id="loading-spinner"></div>
+  <div id="animated-modal"></div>  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      ui.revealOnScroll();
+      ui.pageTransition();
+    });
   </script></body>
 </html>

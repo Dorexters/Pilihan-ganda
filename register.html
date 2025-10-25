@@ -1,58 +1,37 @@
-<!doctype html>
-
-<html lang="id">
+<!DOCTYPE html><html lang="id" data-theme>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Registrasi Siswa - Ujian Online</title>
-  <link rel="stylesheet" href="main.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registrasi | Ujian Online</title>
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="animation.css" />
 </head>
-<body>
-  <header>
-    <div class="container header-inner">
-      <a href="index.html" class="brand">Ujian Online</a>
-      <nav>
-        <a href="login.html">Login</a>
-      </nav>
+<body data-page="register" data-animate="fade-in">
+  <div class="app-container">
+    <main class="auth-card" data-animate="slide-up">
+      <h1 class="title">Daftar Akun Baru</h1>
+      <p class="subtitle">Masukkan data Anda untuk mulai ujian</p><form id="registerForm" autocomplete="off">
+    <div class="form-group">
+      <label for="name">Nama Lengkap</label>
+      <input type="text" id="name" name="name" placeholder="Nama Anda" required />
     </div>
-  </header>  <main class="container">
-    <section class="card form-card">
-      <h1>Daftar Akun Siswa</h1>
-      <form id="registerForm">
-        <div class="form-group">
-          <label for="name">Nama Lengkap</label>
-          <input type="text" id="name" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email (.com)</label>
-          <input type="email" id="email" required placeholder="nama@email.com">
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" required minlength="6">
-        </div>
-        <button type="submit" class="btn">Daftar</button>
-        <p class="note">Sudah punya akun? <a href="login.html">Login di sini</a></p>
-      </form>
-      <p id="registerMessage" class="message"></p>
-    </section>
-  </main>  <footer>
-    <div class="container footer-inner">
-      <small>© 2025 Ujian Online</small>
+
+    <div class="form-group">
+      <label for="email">Email (.com)</label>
+      <input type="email" id="email" name="email" placeholder="nama@email.com" required pattern="^[^\s@]+@[^\s@]+\.com$" />
     </div>
-  </footer>  <script src="utils.js"></script>  <script src="storage.js"></script>  <script src="auth.js"></script>  <script>
-    const form = document.getElementById('registerForm');
-    const msg = document.getElementById('registerMessage');
 
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value;
+    <div class="form-group">
+      <label for="password">Kata Sandi</label>
+      <input type="password" id="password" name="password" placeholder="Minimal 6 karakter" minlength="6" required />
+    </div>
 
-      const ok = await registerUser(name, email, password);
-      msg.textContent = ok.success ? 'Registrasi berhasil! Silakan login.' : ok.error;
-      if (ok.success) form.reset();
-    });
-  </script></body>
-  </html>
+    <button type="submit" class="btn-primary" data-animate="scale-in">Daftar</button>
+    <p class="form-note">Sudah punya akun? <a href="login.html">Masuk di sini</a></p>
+  </form>
+</main>
+
+  </div>  <div data-include="loading-spinner.html"></div>
+  <div data-include="toast-message.html"></div>
+  <div data-include="animated-modal.html"></div>  <script src="app.js"></script>  <script src="ui.js"></script>  <script src="auth.js"></script></body>
+</html>

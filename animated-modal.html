@@ -1,0 +1,116 @@
+<div id="animatedModal" class="modal-backdrop hidden" data-animate="fade">
+  <div class="modal animated-modal" data-animate="scale">
+    <div class="modal-header">
+      <h3 id="animatedModalTitle">Judul Modal</h3>
+      <button id="animatedModalClose" class="close-btn">&times;</button>
+    </div>
+    <div class="modal-body" id="animatedModalBody">
+      Konten modal di sini.
+    </div>
+    <div class="modal-footer" id="animatedModalFooter">
+      <button class="btn btn-primary" id="animatedModalOk">OK</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Fungsi global untuk menampilkan modal animasi
+  window.showAnimatedModal = (title, body, footerButtons = []) => {
+    const modalBackdrop = document.getElementById('animatedModal');
+    const modalTitle = document.getElementById('animatedModalTitle');
+    const modalBody = document.getElementById('animatedModalBody');
+    const modalFooter = document.getElementById('animatedModalFooter');
+
+    modalTitle.textContent = title || 'Modal';
+    modalBody.innerHTML = body || '';
+    
+    // Bersihkan footer
+    modalFooter.innerHTML = '';
+    if (footerButtons.length === 0) {
+      const okBtn = document.createElement('button');
+      okBtn.textContent = 'OK';
+      okBtn.className = 'btn btn-primary';
+      okBtn.addEventListener('click', () => hideAnimatedModal());
+      modalFooter.appendChild(okBtn);
+    } else {
+      footerButtons.forEach(btnConfig => {
+        const btn = document.createElement('button');
+        btn.textContent = btnConfig.text || 'OK';
+        btn.className = btnConfig.className || 'btn btn-primary';
+        btn.addEventListener('click', () => {
+          if (btnConfig.onClick) btnConfig.onClick();
+          hideAnimatedModal();
+        });
+        modalFooter.appendChild(btn);
+      });
+    }
+
+    modalBackdrop.classList.remove('hidden');
+    ui.animateModal(modalBackdrop, true);
+  };
+
+  window.hideAnimatedModal = () => {
+    const modalBackdrop = document.getElementById('animatedModal');
+    ui.animateModal(modalBackdrop, false, () => {
+      modalBackdrop.classList.add('hidden');
+    });
+  };
+
+  // Close button
+  document.getElementById('animatedModalClose').addEventListener('click', hideAnimatedModal);
+</script>
+
+<style>
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .modal-backdrop.show {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 1rem;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: var(--shadow);
+    transform: scale(0.8);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .modal-body {
+    margin: 1rem 0;
+  }
+
+  .modal-footer {
+    text-align: right;
+    gap: 0.5rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+</style>

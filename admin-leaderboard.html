@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaderboard Admin</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="animation.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body data-page="admin-leaderboard" class="fade-in">
+
+  <include src="header.html"></include>
+
+  <main class="admin-container" data-transition="slide-up">
+    <section class="admin-header">
+      <h1 data-animate="fade-down">Leaderboard Siswa</h1>
+      <p class="subtext">Pantau peringkat dan performa ujian seluruh siswa.</p>
+    </section>
+
+    <section class="leaderboard-controls" data-animate="fade-up">
+      <div class="toolbar">
+        <input type="text" id="searchStudent" placeholder="Cari nama siswa..." />
+        <select id="filterExam">
+          <option value="">Semua Ujian</option>
+          <option value="mid">Ujian Tengah</option>
+          <option value="final">Ujian Akhir</option>
+        </select>
+        <button id="exportLeaderboard" class="btn secondary">Ekspor Data</button>
+      </div>
+    </section>
+
+    <section class="leaderboard-table card" data-animate="fade-up">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Peringkat</th>
+            <th>Nama</th>
+            <th>Nilai</th>
+            <th>Waktu Selesai</th>
+            <th>Ujian</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboardTable">
+          <!-- Data akan dimuat lewat admin.js -->
+        </tbody>
+      </table>
+    </section>
+
+    <section class="summary-section card" data-animate="fade-up">
+      <h2>Statistik Umum</h2>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <h3>Peserta Aktif</h3>
+          <p id="totalStudents">0</p>
+        </div>
+        <div class="summary-item">
+          <h3>Rata-rata Nilai</h3>
+          <p id="averageScore">0</p>
+        </div>
+        <div class="summary-item">
+          <h3>Ujian Selesai</h3>
+          <p id="totalExams">0</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <include src="footer.html"></include>
+
+  <include src="toast-message.html"></include>
+  <include src="loading-spinner.html"></include>
+
+  <script src="app.js"></script>
+  <script src="ui.js"></script>
+  <script src="admin.js"></script>
+</body>
+          </html>

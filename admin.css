@@ -1,0 +1,53 @@
+/* admin.css Styling khusus panel admin (dashboard, questions, activity, leaderboard) */
+
+.admin-container { max-width: 1200px; margin: auto; padding: 2rem; }
+
+.admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+
+.admin-header h1 { font-size: 1.5rem; font-weight: 600; }
+
+.admin-toolbar { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+.admin-toolbar button { padding: 0.6rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--color-border); background: var(--color-surface); cursor: pointer; transition: background var(--transition-fast), border var(--transition-fast); }
+
+.admin-toolbar button:hover { background: #f3f4f6; }
+
+.admin-toolbar .primary { background: var(--color-primary); color: #fff; border: none; }
+
+.admin-toolbar .primary:hover { background: var(--color-primary-hover); }
+
+.admin-toolbar .danger { background: var(--color-danger); color: #fff; border: none; }
+
+/* Table styling */ .admin-table { width: 100%; border-collapse: collapse; background: var(--color-surface); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
+
+.admin-table th, .admin-table td { padding: 0.8rem 1rem; text-align: left; border-bottom: 1px solid var(--color-border); }
+
+.admin-table th { background: #f3f4f6; font-weight: 600; }
+
+.admin-table tr:hover { background: #f9fafb; }
+
+/* Row animation for updates */ @keyframes row-flash { from { background-color: rgba(59,130,246,0.2); } to { background-color: transparent; } } .row-updated { animation: row-flash 1s ease; }
+
+/* Question editor section */ .question-editor { margin-top: 1rem; background: var(--color-surface); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: 1.5rem; }
+
+.question-editor h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; }
+
+.question-editor textarea, .question-editor input { width: 100%; margin-bottom: 0.8rem; padding: 0.6rem 0.8rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); outline: none; }
+
+.question-editor textarea:focus, .question-editor input:focus { border-color: var(--color-primary); }
+
+.media-preview img, .media-preview video { max-width: 100%; margin-top: 0.5rem; border-radius: var(--radius-sm); }
+
+/* Leaderboard */ .leaderboard-table td.rank { font-weight: 600; color: var(--color-primary); }
+
+.leaderboard-table td.score { font-weight: 500; }
+
+/* Activity list */ .activity-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+
+.activity-item { background: var(--color-surface); border-radius: var(--radius-md); padding: 1rem; box-shadow: var(--shadow-sm); transition: transform var(--transition-fast); }
+
+.activity-item:hover { transform: translateY(-3px); }
+
+/* Export feedback animation */ @keyframes export-feedback { from { transform: scale(0.95); opacity: 0.7; } to { transform: scale(1); opacity: 1; } } .export-feedback { animation: export-feedback 0.4s var(--ease); }
+
+/* Responsive */ @media (max-width: 768px) { .admin-header { flex-direction: column; gap: 1rem; } .admin-toolbar { justify-content: center; } .admin-table th, .admin-table td { font-size: 0.9rem; } }

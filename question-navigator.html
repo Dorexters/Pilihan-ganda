@@ -1,0 +1,80 @@
+<div id="questionNavigator" class="navigator card" data-animate="slide-up">
+  <h3 class="navigator-title">Navigasi Soal</h3>
+  <div id="navigatorButtons" class="navigator-grid"></div>
+</div>
+
+<script>
+  // Inisialisasi navigasi soal
+  window.initQuestionNavigator = (totalQuestions, currentIndex, onNavigate) => {
+    const container = document.getElementById('navigatorButtons');
+    if (!container) return;
+    container.innerHTML = '';
+
+    for (let i = 0; i < totalQuestions; i++) {
+      const btn = document.createElement('button');
+      btn.className = 'nav-btn';
+      btn.textContent = i + 1;
+
+      if (i === currentIndex) btn.classList.add('active');
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        if (typeof onNavigate === 'function') onNavigate(i);
+      });
+
+      container.appendChild(btn);
+    }
+  };
+
+  // Fungsi update highlight jika jawaban berubah
+  window.markQuestionAnswered = index => {
+    const btn = document.querySelectorAll('.nav-btn')[index];
+    if (btn) btn.classList.add('answered');
+  };
+</script>
+
+<style>
+  .navigator {
+    padding: 1rem;
+    background: var(--surface);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-top: 1.5rem;
+  }
+
+  .navigator-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+  }
+
+  .navigator-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .nav-btn {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--accent-light);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .nav-btn:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .nav-btn.active {
+    background: var(--accent);
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .nav-btn.answered {
+    background: var(--success-light);
+  }
+</style>

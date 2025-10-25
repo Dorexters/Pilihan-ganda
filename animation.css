@@ -1,0 +1,29 @@
+/* animation.css Utility animations and prefers-reduced-motion support Used by data-animate attributes across the app */
+
+:root{ --anim-fast: 180ms; --anim-medium: 320ms; --ease: cubic-bezier(.2,.8,.2,1); }
+
+/* Reduced motion */ @media (prefers-reduced-motion: reduce){ *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important} }
+
+/* Fade */ @keyframes fade-in { from{opacity:0} to{opacity:1} } .fade-in, [data-animate="fade-in"]{ animation: fade-in var(--anim-medium) var(--ease) both }
+
+@keyframes fade-up { from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none} } [data-animate="fade-up"], .fade-up{ animation: fade-up var(--anim-medium) var(--ease) both }
+
+@keyframes fade-down { from{opacity:0; transform:translateY(-8px)} to{opacity:1; transform:none} } [data-animate="fade-down"], .fade-down{ animation: fade-down var(--anim-medium) var(--ease) both }
+
+/* Slide */ @keyframes slide-up { from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:none} } [data-animate="slide-up"], .slide-up{ animation: slide-up var(--anim-medium) var(--ease) both }
+
+@keyframes slide-down { from{opacity:0; transform:translateY(-14px)} to{opacity:1; transform:none} } [data-animate="slide-down"], .slide-down{ animation: slide-down var(--anim-medium) var(--ease) both }
+
+/* Crossfade for content swaps */ @keyframes crossfade-in { from{opacity:0} to{opacity:1} } @keyframes crossfade-out { from{opacity:1} to{opacity:0} } .crossfade-enter{ animation: crossfade-in var(--anim-fast) var(--ease) both } .crossfade-exit{ animation: crossfade-out var(--anim-fast) var(--ease) both } [data-animate="crossfade"]{ position:relative }
+
+/* Scale / Pop */ @keyframes scale-in { from{opacity:0; transform:scale(.98)} to{opacity:1; transform:none} } [data-animate="scale-in"], .scale-in{ animation: scale-in var(--anim-fast) var(--ease) both }
+
+/* Reveal on scroll helper (used with ui.revealOnScroll) */ [data-animate="reveal"]{ opacity:0; transform:translateY(12px); transition: opacity var(--anim-medium) var(--ease), transform var(--anim-medium) var(--ease) } [data-animate="reveal"].revealed{ opacity:1; transform:none }
+
+/* Simple loading spinner (small) */ .spinner{ width:36px; height:36px; border-radius:50%; border:4px solid rgba(0,0,0,0.08); border-top-color:var(--color-primary); animation: spin 1s linear infinite } @keyframes spin{ to{ transform:rotate(360deg)} }
+
+/* Toast slide from top */ @keyframes toast-in { from{opacity:0; transform:translateY(-10px)} to{opacity:1; transform:none} } .toast{ animation: toast-in var(--anim-fast) var(--ease) both }
+
+/* Utility classes */ .hidden{ display:none !important } .fade-out{ animation: fade-down calc(var(--anim-medium) / 1.2) var(--ease) backwards }
+
+/* Accessibility: focus visible */ :focus{ outline: 3px solid rgba(37,99,235,0.18); outline-offset: 2px }

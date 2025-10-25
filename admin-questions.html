@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id" data-theme>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kelola Soal | Admin Panel</title>
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="animation.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body data-page="admin-questions" data-animate="fade-in">
+  <header data-include="header.html"></header>
+
+  <main class="admin-questions" data-animate="slide-up">
+    <section class="page-header">
+      <h1 class="title">Kelola Soal Ujian</h1>
+      <p class="subtitle">Unggah, edit, atau hapus soal ujian beserta media</p>
+    </section>
+
+    <section class="upload-section" data-animate="fade-up">
+      <h2>Upload Soal Baru</h2>
+      <form id="questionForm" class="form-card">
+        <div class="form-group">
+          <label for="questionId">ID Soal</label>
+          <input type="text" id="questionId" placeholder="contoh: Q1" required />
+        </div>
+
+        <div class="form-group">
+          <label for="questionType">Tipe Soal</label>
+          <select id="questionType" required>
+            <option value="single">Pilihan Tunggal</option>
+            <option value="multiple">Pilihan Ganda</option>
+            <option value="essay">Essay</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="questionText">Teks Soal</label>
+          <textarea id="questionText" placeholder="Tulis pertanyaan..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="questionMedia">Media (opsional)</label>
+          <input type="file" id="questionMedia" accept="image/*,video/*" />
+        </div>
+
+        <div id="choicesContainer" class="form-group" data-animate="fade-in">
+          <!-- Input pilihan akan muncul dinamis di sini -->
+        </div>
+
+        <div class="form-group explanation-section" data-animate="fade-up">
+          <label>Penjelasan Jawaban</label>
+          <textarea id="explanationCorrect" placeholder="Penjelasan untuk jawaban benar"></textarea>
+          <textarea id="explanationIncorrect" placeholder="Penjelasan untuk jawaban salah"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Simpan Soal</button>
+          <button type="button" id="uploadBatchBtn" class="btn-secondary">Upload Batch JSON</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="question-list" data-animate="fade-up">
+      <h2>Daftar Soal</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tipe</th>
+            <th>Pertanyaan</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="questionTableBody">
+          <!-- Baris soal muncul di sini -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer data-include="footer.html"></footer>
+
+  <div data-include="modal-confirm.html"></div>
+  <div data-include="loading-spinner.html"></div>
+  <div data-include="toast-message.html"></div>
+  <div data-include="animated-modal.html"></div>
+
+  <script src="app.js"></script>
+  <script src="ui.js"></script>
+  <script src="admin.js"></script>
+  <script src="question-editor.js"></script>
+</body>
+  </html>

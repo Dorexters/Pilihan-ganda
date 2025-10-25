@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id" data-theme>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akun Saya | Ujian Online</title>
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="animation.css" />
+</head>
+<body data-page="account" data-animate="fade-in">
+  <header data-include="header.html"></header>
+
+  <main class="account-container" data-animate="slide-up">
+    <section class="account-card">
+      <h1 class="title">Pengaturan Akun</h1>
+      <p class="subtitle">Kelola keamanan dan informasi akun Anda</p>
+
+      <div class="account-info" data-animate="fade-up">
+        <p><strong>Nama:</strong> <span id="userName">-</span></p>
+        <p><strong>Email:</strong> <span id="userEmail">-</span></p>
+      </div>
+
+      <form id="changePasswordForm" autocomplete="off" class="form-card" data-animate="fade-up">
+        <h2>Ganti Kata Sandi</h2>
+        <div class="form-group">
+          <label for="oldPassword">Kata Sandi Lama</label>
+          <input type="password" id="oldPassword" placeholder="••••••••" required />
+        </div>
+        <div class="form-group">
+          <label for="newPassword">Kata Sandi Baru</label>
+          <input type="password" id="newPassword" placeholder="Minimal 6 karakter" minlength="6" required />
+        </div>
+        <button type="submit" class="btn-primary" data-animate="scale-in">Simpan Perubahan</button>
+      </form>
+
+      <div class="danger-zone" data-animate="fade-up">
+        <h2>Zona Bahaya</h2>
+        <button id="deleteAccountBtn" class="btn-danger">Hapus Akun</button>
+      </div>
+
+      <div class="account-actions" data-animate="fade-up">
+        <a href="dashboard.html" class="btn-secondary">Kembali ke Dashboard</a>
+        <button id="logoutBtn" class="btn-outline">Keluar</button>
+      </div>
+    </section>
+  </main>
+
+  <footer data-include="footer.html"></footer>
+
+  <div data-include="modal-confirm.html"></div>
+  <div data-include="loading-spinner.html"></div>
+  <div data-include="toast-message.html"></div>
+  <div data-include="animated-modal.html"></div>
+
+  <script src="app.js"></script>
+  <script src="ui.js"></script>
+  <script src="auth.js"></script>
+  <script src="account.js"></script>
+</body>
+</html>

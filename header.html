@@ -1,0 +1,27 @@
+<header class="app-header" data-animate="fade">
+  <div class="container header-inner">
+    <a href="index.html" class="brand" data-transition>Ujian Online</a>
+    <nav class="nav-links">
+      <a href="dashboard.html" data-transition>Dashboard</a>
+      <a href="account.html" data-transition>Akun</a>
+      <a href="#" id="logoutBtn" class="logout">Logout</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Script ini otomatis aktif di semua halaman yang meng-include header.html
+  document.addEventListener('DOMContentLoaded', () => {
+    const logout = document.getElementById('logoutBtn');
+    if (logout) {
+      logout.addEventListener('click', e => {
+        e.preventDefault();
+        if (typeof logoutUser === 'function') {
+          logoutUser();
+        }
+        ui.showToast('Anda telah logout.');
+        setTimeout(() => ui.pageTransition('login.html'), 600);
+      });
+    }
+  });
+</script>
